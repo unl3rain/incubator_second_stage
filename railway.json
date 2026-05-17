@@ -1,0 +1,46 @@
+{
+  "project": {
+    "name": "incubator_second_stage"
+  },
+  "services": [
+    {
+      "name": "server",
+      "path": "server",
+      "build": {
+        "builder": "python",
+        "python_version": "3.12",
+        "install": "pip install -r requirements.txt"
+      },
+      "startCommand": "uvicorn app.main:app --host 0.0.0.0 --port $PORT",
+      "env": {
+        "APP_HOST": "0.0.0.0",
+        "APP_PORT": "8000",
+        "PORT": "8000",
+        "DATABASE_URL": "${DATABASE_URL}",
+        "STRIPE_SECRET": "${STRIPE_SECRET}",
+        "OAUTH_GOOGLE_CLIENT_ID": "${OAUTH_GOOGLE_CLIENT_ID}",
+        "OAUTH_GOOGLE_CLIENT_SECRET": "${OAUTH_GOOGLE_CLIENT_SECRET}"
+      }
+    },
+    {
+      "name": "client",
+      "path": "client",
+      "build": {
+        "builder": "node",
+        "node_version": "20",
+        "install": "npm ci",
+        "buildCommand": "npm run build"
+      },
+      "startCommand": "npx serve -s dist -l 3000",
+      "env": {
+        "VITE_API_BASE": "${VITE_API_BASE}"
+      }
+    }
+  ],
+  "plugins": [
+    {
+      "name": "postgres",
+      "service": "server"
+    }
+  ]
+}
