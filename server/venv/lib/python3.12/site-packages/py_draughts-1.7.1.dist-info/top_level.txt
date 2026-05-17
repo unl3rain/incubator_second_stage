@@ -1,0 +1,5 @@
+docs
+draughts
+examples
+test
+tools
