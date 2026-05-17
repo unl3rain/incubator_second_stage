@@ -1,0 +1,12 @@
+:8080 {
+	root * /app/dist
+	file_server
+
+	@api {
+		path /api/*
+	}
+
+	reverse_proxy @api server:8000
+
+	try_files {path} /index.html
+}
