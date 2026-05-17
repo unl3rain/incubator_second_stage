@@ -123,6 +123,12 @@ function squareClass(row, col, selected, legalTarget, boardSkin) {
   } else if (boardSkin === 'sunset') {
     base = dark ? 'bg-orange-900 text-white' : 'bg-amber-200 text-amber-950'
     accent = legalTarget ? 'ring-4 ring-rose-300 ring-inset' : ''
+  } else if (boardSkin === 'ocean') {
+    base = dark ? 'bg-teal-950 text-white' : 'bg-cyan-200 text-slate-900'
+    accent = legalTarget ? 'ring-4 ring-sky-300 ring-inset' : ''
+  } else if (boardSkin === 'ruby') {
+    base = dark ? 'bg-rose-950 text-white' : 'bg-pink-200 text-rose-900'
+    accent = legalTarget ? 'ring-4 ring-fuchsia-300 ring-inset' : ''
   }
 
   const active = selected ? 'shadow-[inset_0_0_0_3px_rgba(15,118,110,0.9)]' : ''
@@ -146,6 +152,18 @@ function pieceClass(piece, pieceSkin) {
     return piece.player === 'white'
       ? 'bg-gradient-to-br from-yellow-100 via-yellow-300 to-yellow-500 text-yellow-900'
       : 'bg-gradient-to-br from-amber-300 via-amber-600 to-amber-900 text-amber-50'
+  }
+
+  if (pieceSkin === 'crystal') {
+    return piece.player === 'white'
+      ? 'bg-gradient-to-br from-sky-100 via-cyan-100 to-slate-200 text-slate-900'
+      : 'bg-gradient-to-br from-indigo-200 via-violet-400 to-slate-900 text-white'
+  }
+
+  if (pieceSkin === 'shadow') {
+    return piece.player === 'white'
+      ? 'bg-slate-300 text-slate-900'
+      : 'bg-slate-900 text-white'
   }
 
   return piece.player === 'white'
@@ -1123,7 +1141,7 @@ export default function PlayBoard({ auth }) {
 
             <div className="mt-5 grid gap-4 lg:grid-cols-[minmax(0,1fr)_18rem]">
               <div className="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-slate-50 p-3">
-                <div ref={boardGridRef} className={`grid grid-cols-8 gap-0 ${isBoardFlipped ? 'rotate-180' : ''} ${boardSkin === 'carbon' ? 'bg-slate-900' : boardSkin === 'sunset' ? 'bg-orange-900' : 'bg-emerald-900'}`}>
+                <div ref={boardGridRef} className={`grid grid-cols-8 gap-0 ${isBoardFlipped ? 'rotate-180' : ''} ${boardSkin === 'carbon' ? 'bg-slate-900' : boardSkin === 'sunset' ? 'bg-orange-900' : boardSkin === 'ocean' ? 'bg-teal-950' : boardSkin === 'ruby' ? 'bg-rose-950' : 'bg-emerald-900'}`}>
                   {board.map((row, rowIndex) => row.map((piece, colIndex) => {
                     const selectedHere = Boolean(selected && selected[0] === rowIndex && selected[1] === colIndex)
                     const legalTarget = legalTargetSet.has(`${rowIndex}-${colIndex}`)

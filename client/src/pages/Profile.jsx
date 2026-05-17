@@ -140,13 +140,19 @@ export default function Profile({ auth }) {
 
   const isPro = auth.subscription === 'pro'
   const canEquipSkin = (kind, skinId) => {
+    const ownedSkins = kind === 'board'
+      ? cosmetics?.owned_board_skins || []
+      : cosmetics?.owned_piece_skins || []
+
+    if (ownedSkins.includes(skinId)) {
+      return true
+    }
+
     if (isPro) {
       return true
     }
-    if (kind === 'board') {
-      return skinId === 'classic'
-    }
-    return skinId === 'marble'
+
+    return false
   }
 
   const equipSkin = async (kind, skinId) => {

@@ -10,6 +10,12 @@ function boardSquareClass(row, col, boardSkin) {
   if (boardSkin === 'sunset') {
     return dark ? 'bg-orange-900 text-white' : 'bg-amber-200 text-amber-950'
   }
+  if (boardSkin === 'ocean') {
+    return dark ? 'bg-teal-950 text-white' : 'bg-cyan-200 text-slate-900'
+  }
+  if (boardSkin === 'ruby') {
+    return dark ? 'bg-rose-950 text-white' : 'bg-pink-200 text-rose-900'
+  }
   return dark ? 'bg-emerald-900 text-white' : 'bg-amber-100 text-slate-900'
 }
 
@@ -30,6 +36,18 @@ function pieceClass(piece, pieceSkin) {
     return piece.player === 'white'
       ? 'bg-gradient-to-br from-yellow-100 via-yellow-300 to-yellow-500 text-yellow-900'
       : 'bg-gradient-to-br from-amber-300 via-amber-600 to-amber-900 text-amber-50'
+  }
+
+  if (pieceSkin === 'crystal') {
+    return piece.player === 'white'
+      ? 'bg-gradient-to-br from-sky-100 via-cyan-100 to-slate-200 text-slate-900'
+      : 'bg-gradient-to-br from-indigo-200 via-violet-400 to-slate-900 text-white'
+  }
+
+  if (pieceSkin === 'shadow') {
+    return piece.player === 'white'
+      ? 'bg-slate-300 text-slate-900'
+      : 'bg-slate-900 text-white'
   }
 
   return piece.player === 'white'
