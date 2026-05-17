@@ -1,5 +1,9 @@
 # Checkers Great Level Starter
 
+## LIVE PRODUCTION URL (RAILWAY)
+
+### https://incubatorsecondstagedeploy-production.up.railway.app
+
 Monorepo starter for a "Great" level checkers product:
 
 - `client`: React + Vite + Tailwind CSS
@@ -9,7 +13,7 @@ Monorepo starter for a "Great" level checkers product:
 **Submission summary (for the assignment)**
 
 - **Level achieved:** Great — multiplayer (invite links + WebSockets), AI coach analysis, social layer (friends/chat/leaderboard), daily puzzles, replay/review, and Pro monetization hooks.
-- **Working demo:** (paste your deployed URL here)
+- **Working demo:** https://incubatorsecondstagedeploy-production.up.railway.app
 - **Repository:** (this repository)
 - **Short description for submission:** A social-first checkers web app with server-authoritative rules, invite-link multiplayer, AI coaching and post-game analysis, ranked leaderboards, daily puzzles, and premium cosmetic packs.
 
